@@ -1,0 +1,31 @@
+{
+  "name": "gulp-markdown-code-blocks",
+  "version": "1.0.0",
+  "description": "Gulp task for running markdown-code-blocks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdepold/gulp-markdown-code-blocks.git"
+  },
+  "keywords": [
+    "gulp",
+    "markdown-code-blocks"
+  ],
+  "author": "Sascha Depold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdepold/gulp-markdown-code-blocks/issues"
+  },
+  "homepage": "https://github.com/sdepold/gulp-markdown-code-blocks",
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "markdown-code-blocks": "0.0.1",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.9"
+  }
+}

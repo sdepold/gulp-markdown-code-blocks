@@ -1,9 +1,10 @@
 var through     = require('through2');
 var gutil       = require('gulp-util');
 var path        = require('path');
-var exec        = require("child_process").exec;
+var exec        = require('child_process').exec;
+var path        = require('path');
 var PluginError = gutil.PluginError;
-var vm          = require('vm');
+var resolve     = require('resolve').sync;
 
 module.exports = function () {
   return through.obj(function (file, enc, cb) {
@@ -15,7 +16,10 @@ module.exports = function () {
 // markdown-code-blocks -t javascript README.md|node
 
 function getExecutablePath () {
-  return path.resolve(__dirname, 'node_modules', '.bin', 'markdown-code-blocks');
+  return path.resolve(
+    path.dirname(resolve('markdown-code-blocks')),
+    'cmd.js'
+  );
 }
 
 function evalCodeInMarkdownFile (file, callback) {

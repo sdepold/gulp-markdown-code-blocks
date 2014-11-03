@@ -1,6 +1,6 @@
 {
   "name": "gulp-markdown-code-blocks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gulp task for running markdown-code-blocks.",
   "main": "index.js",
   "scripts": {

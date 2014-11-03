@@ -23,6 +23,7 @@ function evalCodeInMarkdownFile (file, callback) {
     getExecutablePath() + ' -t javascript ' + file.path + ' | node',
     function (error, stdout, stderr) {
       if (error) {
+        process.stderr.write(stderr + "\n");
         callback(new PluginError("gulp-markdown-code-blocks", "Parsing failed."));
       } else {
         callback();

@@ -1,4 +1,4 @@
-# gulp-markdown-code-blocks
+# gulp-markdown-code-blocks [![Build Status](https://secure.travis-ci.org/sdepold/gulp-markdown-code-blocks.png)](http://travis-ci.org/sdepold/gulp-markdown-code-blocks)
 
 Gulp task for running [markdown-code-blocks](https://github.com/grncdr/markdown-code-blocks).
 

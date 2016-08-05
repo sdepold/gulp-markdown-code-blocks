@@ -11,7 +11,13 @@ var fs          = require('fs');
 module.exports = function () {
   return through.obj(function (file, enc, cb) {
     this.push(file);
-    evalCodeInMarkdownFile(enhanceFile(file), cb);
+    var newFilePath = enhanceFile(file);
+
+    evalCodeInMarkdownFile(newFilePath, function (err) {
+      fs.unlink(newFilePath, function (unlinkErr) {
+        cb(err || unlinkErr);
+      });
+    });
   });
 };
 
@@ -22,9 +28,9 @@ function getExecutablePath () {
   );
 }
 
-function evalCodeInMarkdownFile (file, callback) {
+function evalCodeInMarkdownFile (filePath, callback) {
   exec(
-    getExecutablePath() + ' -t javascript,js ' + file.path + ' | node',
+    getExecutablePath() + ' -t javascript,js ' + filePath + ' | node',
     function (error, stdout, stderr) {
       if (error) {
         process.stderr.write(stderr + "\n");
@@ -50,7 +56,7 @@ function enhanceFile (file) {
 
   fs.writeFileSync(newPath, content);
 
-  return fs.createReadStream(newPath);
+  return newPath;
 }
 
 function getPackageInformation (file) {
